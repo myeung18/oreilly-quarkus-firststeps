@@ -17,6 +17,11 @@ package org.acme;
 
 import org.acme.dao.Training;
 import org.acme.dao.TrainingRepository;
+import org.hibernate.engine.spi.Managed;
+import org.kie.baaas.dfm.app.manager.KafkaService;
+import org.kie.baaas.dfm.app.manager.kafkaservice.KafkaServiceProducer;
+import org.kie.baaas.dfm.app.manager.kafkaservice.ManagedKafkaService;
+import org.kie.baaas.dfm.app.manager.kafkaservice.UndefinedKafkaService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -27,11 +32,18 @@ import java.util.List;
 
 @Path("/training")
 public class TrainingResource {              // (1)
+    @Inject
+    KafkaService kafkaService;
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Training> listTrainings() {
         List<Training> res = Training.listAll();
         System.out.println("record >>> " + res);
+
+        System.out.println("class: " + kafkaService);
+        System.out.println("class: " + (KafkaServiceProducer.isUndefined(kafkaService)));
         return res;                   // (2)
     }
 
