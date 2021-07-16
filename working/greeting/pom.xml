@@ -30,7 +30,18 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-panache-mock -->
     <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-panache-mock</artifactId>
+      <version>1.11.1.Final</version>
+      <scope>test</scope>
+    </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+      </dependency>
+      <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
@@ -55,6 +66,14 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-logging-gelf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-h2</artifactId>
     </dependency>
   </dependencies>
   <build>
